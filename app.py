@@ -133,7 +133,7 @@ def create():
 
     # print('lyrics_body' in lyrics['message']['body']['lyrics'])
 
-    if('lyrics_body' in lyrics['message']['body']['lyrics']):
+    if('lyrics' in lyrics['message']['body'] and 'lyrics_body' in lyrics['message']['body']['lyrics']):
         i = lyrics['message']['body']['lyrics']['lyrics_body'].upper().split('\n')
         i = list(filter(lambda x : len(x) > 4 , i))
     elif('lyrics_body' in lyrics['message']['body']['lyrics'] == False):
