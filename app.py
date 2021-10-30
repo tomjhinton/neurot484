@@ -156,5 +156,5 @@ def create():
     test = api.media_upload('art.png',file= buf)
     api.update_status(status=i[randint(0,len(i)-3)], media_ids=[test.media_id])
 
-    im2.show()
+    # im2.show()
 create()
