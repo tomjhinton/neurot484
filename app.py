@@ -54,7 +54,7 @@ def create():
         quote_font2 = ImageFont.truetype('test2.ttf', randint(700, 2000))
         draw = ImageDraw.Draw(im1)
         arr2 = [quote_font,  quote_font1, quote_font2]
-    
+
 
     draw = ImageDraw.Draw(im2)
     for i in range(randint(84, 145)):
@@ -137,15 +137,16 @@ def create():
         i = lyrics['message']['body']['lyrics']['lyrics_body'].upper().split('\n')
         i = list(filter(lambda x : len(x) > 4 , i))
     elif('lyrics_body' in lyrics['message']['body']['lyrics'] == False):
-            lyrics = requests.get(
-              'https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey='
-              + mapikc +
-              '&track_id=' + str(ids['message']['body']['track_list'][randint(0,len(ids['message']['body']['track_list'])-1 )]["track"]["track_id"])
-            )
+        while('lyrics_body' in lyrics['message']['body']['lyrics'] == False):
+                lyrics = requests.get(
+                  'https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey='
+                  + mapikc +
+                  '&track_id=' + str(ids['message']['body']['track_list'][randint(0,len(ids['message']['body']['track_list'])-1 )]["track"]["track_id"])
+                )
 
-            lyrics = lyrics.json()
-            i = lyrics['message']['body']['lyrics']['lyrics_body'].upper().split('\n')
-            i = list(filter(lambda x : len(x) > 4 , i))
+                lyrics = lyrics.json()
+                i = lyrics['message']['body']['lyrics']['lyrics_body'].upper().split('\n')
+                i = list(filter(lambda x : len(x) > 4 , i))
 
 
     buf = io.BytesIO()
